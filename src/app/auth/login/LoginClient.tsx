@@ -1,4 +1,6 @@
 'use client'
+import { userLogin } from '@/app/actions/user';
+import useLoginUser from '@/app/hooks/useLoginUser';
 import Button from '@/components/Button';
 import Container from '@/components/Container';
 import Input from '@/components/Input';
@@ -16,6 +18,7 @@ const LoginClient:React.FC<LoginClientProps> = () => {
   })
 
   const router = useRouter()
+  const loginUser = useLoginUser()
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -24,6 +27,13 @@ const LoginClient:React.FC<LoginClientProps> = () => {
       value
     } = event.target
     setLoginForm({...loginForm, [event.target.id]: event.target.value})
+  }
+
+  const handleClick = async () => {
+    const user = await userLogin(loginForm)
+    localStorage.setItem('user' , user.email)
+    loginUser.login(user)
+    router.push('/')
   }
   
   return (
@@ -88,11 +98,11 @@ const LoginClient:React.FC<LoginClientProps> = () => {
         </div>
         <Button 
           label='Login'
-          onClick={() => {}}
+          onClick={handleClick}
         />
         <div
           className='
-            text-sm
+            text-md
           '
         >
           <span>First time in here ? </span>

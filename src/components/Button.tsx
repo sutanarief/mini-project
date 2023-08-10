@@ -40,8 +40,8 @@ const Button:React.FC<ButtonProps> = ({
         w-full
         font-semibold
         ${outline ? 'bg-transparent' : `bg-${color}`}
-        ${outline ? 'border-white' : `border-${color}`}
-        ${outline ? 'text-white' : `text-${textColor}`}
+        ${outline ? `border-${textColor}` : `border-${color}`}
+        ${outline ? `text-${textColor}` : `text-${textColor}`}
         ${small ? 'py-1' : 'py-3'}
         ${small ? 'text-sm' : 'text-md'}
         ${small ? 'border-[1px]' : 'border-2'}

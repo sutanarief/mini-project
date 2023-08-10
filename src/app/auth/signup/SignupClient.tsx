@@ -103,7 +103,7 @@ const SignupClient:React.FC<SignupClientProps> = () => {
         />
         <div
           className='
-            text-sm
+            text-md
           '
         >
           <span>Already have an account ? </span>

@@ -1,22 +1,19 @@
-import AuthButton from '@/components/AuthButton'
 import Container from '@/components/Container'
-import Image from 'next/image'
+import { getCategories } from './actions/categories'
+import HomePage from '@/components/HomePage'
 
-export default function Home() {
-  const user = false
+export default async function Home() {
+  const categories = await getCategories()
+
   return (
     <Container>
       <div
         className={`
-          w-screen
-          h-screen
-          bg-gray-800
-          flex
-          p-20
-
+          flex          
+          p-10
           `}
       >
-        {!user && <AuthButton />}
+        <HomePage categories={categories}/>
       </div>
     </Container>
   )
